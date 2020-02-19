@@ -25,11 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Werte ausrechnen
             for (const i of umrechnungSonstNoten){
-                sonstNoten_.push(Math.round((punkte*i/100)*100)/100)
+                sonstNoten_.push(Math.round((punkte*i/100)))
             }
 
             for (const i of umrechnungKlausurNoten){
-                klausurNoten_.push(Math.round((punkte*i/100)*100)/100)
+                klausurNoten_.push(Math.round((punkte*i/100)))
             }
 
             // Werte in die Tabelle Schreiben
