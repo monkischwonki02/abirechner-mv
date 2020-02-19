@@ -1,5 +1,8 @@
-    function getValues()
-  {
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const input = document.getElementById("punkte")
+   
+    input.addEventListener("keyup", () => {
     var punkte = document.getElementById('punkte').value;
     var N15 = 0;
     var N14 = 0;
@@ -151,4 +154,6 @@
 	document.getElementById("KNP01").innerHTML = KN01;
 	document.getElementById("KNP00").innerHTML = KN00;
 	
-  }
+    })  
+
+})
