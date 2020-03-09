@@ -31,10 +31,11 @@
               </tr>
             </tbody>
           </table>
-  <br><p><a href="#sonstNoten">Zur sonstigen Notentabelle</a><br><a href="#klausNoten">Zur Klausur Notentabelle</a></p>
+  <br>
+    <div class="toc"><p><a href="#sonstNoten">Zu den sonstigen Noten</a><br><a href="#klausNoten">Zu den Klausur Noten</a></p></div>
   <div class="row">
 	<div class="col-sm-6">
-  <h4 id="sonstNoten"> sonstige Notentabelle </h4>
+  <h4 id="sonstNoten"> sonstige Noten </h4>
           <table id='worksheet_table' class="table table-striped">
             <thead>
               <tr>
@@ -52,7 +53,7 @@
 		  
 		  <br><br></div>
 		  <div class="col-sm-6">
-  <h4 id="klausNoten"> Klausur Notentabelle </h4>
+  <h4 id="klausNoten"> Klausur Noten </h4>
           <table id='worksheet_table' class="table table-striped">
             <thead>
               <tr>
@@ -97,9 +98,26 @@
     </div>
 		  <script src="/js/index.js"></script>
           <script src="/js/return-to-top.js"></script>
-	<script>
-    var test = document.getElementsByTagName('input')[0].value = window.location.hash.substring(1);
-    console.log("Test:"+ test);</script>
+          
+    <!-- Hide TOC Div if screen is bigger than 580px -->
+    <script>
+    //var test = document.getElementsByTagName('input')[0].value = window.location.hash.substring(1);
+    //console.log("Test:"+ test);
+    
+    $(window).resize(function() {
+
+  if ($(this).width() > 580) {
+
+    $('.toc').hide();
+
+  } else {
+
+    $('.toc').show();
+
+    }
+
+});
+    </script>
          
           
 		  
