@@ -10,7 +10,8 @@ new Vue({
         rechnen(umrechnung, punktzahl){
             let temp = []
             for (const i of umrechnung){
-                temp.push(Math.round((punktzahl*i/100)*100)/100)
+                let pktzahl = Math.round((punktzahl*i/100)*100)/100
+                temp.push(pktzahl.toString().replace(".",",")) //Ersetzt das Dezimaltrennzeichen vom Punkt zum Komma
             }
             return temp
         },
@@ -24,17 +25,17 @@ new Vue({
 
     computed: {
         klausurNotenRechner(){
-            if (this.punktzahl > 0 && typeof parseFloat(this.punktzahl) == "number"){
+            if (parseFloat(this.punktzahl.replace(",",".")) > 0 && typeof parseFloat(this.punktzahl) == "number"){
                 this.addState(this.punktzahl)
-                return this.rechnen(this.umrechnungKlausurNoten, parseFloat(this.punktzahl))
+                return this.rechnen(this.umrechnungKlausurNoten, parseFloat(this.punktzahl.replace(",", ".")))
             } else {
                 return " ,".repeat(15).split(",")
             }
         },
         sonstNotenRechner(){
-            if (this.punktzahl > 0 && typeof parseInt(this.punktzahl) == "number"){
+            if (parseFloat(this.punktzahl.replace(",",".")) > 0 && typeof parseInt(this.punktzahl) == "number"){
                 this.addState(this.punktzahl)
-            return this.rechnen(this.umrechnungSonstNoten, parseFloat(this.punktzahl))
+            return this.rechnen(this.umrechnungSonstNoten, parseFloat(this.punktzahl.replace(",", ".")))
             } else {
                 return " ,".repeat(15).split(",")
             }
