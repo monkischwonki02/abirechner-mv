@@ -13,12 +13,19 @@ new Vue({
                 temp.push(Math.round((punktzahl*i/100)*100)/100)
             }
             return temp
+        },
+        addState(punktzahl){
+            let stateObj = { id: "100" }; 
+              
+            window.history.pushState(stateObj, 
+                     "Punktzahl", "?punkte=" + punktzahl);
         }
     },
 
     computed: {
         klausurNotenRechner(){
             if (this.punktzahl > 0 && typeof parseFloat(this.punktzahl) == "number"){
+                this.addState(this.punktzahl)
                 return this.rechnen(this.umrechnungKlausurNoten, parseFloat(this.punktzahl))
             } else {
                 return " ,".repeat(15).split(",")
@@ -26,10 +33,20 @@ new Vue({
         },
         sonstNotenRechner(){
             if (this.punktzahl > 0 && typeof parseInt(this.punktzahl) == "number"){
+                this.addState(this.punktzahl)
             return this.rechnen(this.umrechnungSonstNoten, parseFloat(this.punktzahl))
             } else {
                 return " ,".repeat(15).split(",")
             }
+        }
+    },
+    created(){
+        let URLSearcher = new URLSearchParams(window.location.search)
+
+        if (URLSearcher.has("punkte")){
+            this.punktzahl = URLSearcher.get("punkte")
+        } else {
+            this.punktzahl = ""
         }
     }
 
