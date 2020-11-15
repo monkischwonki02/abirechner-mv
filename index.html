@@ -19,7 +19,7 @@
 <div class="container" id="app"><br><br><br>
 
   <h1>AbiRechner Mecklenburg Vorpommern</h1><br>
-  <h5>Hinweise (hoffenltich iwann unnötig da eh überprüft wird)</h5>
+  <h5>Hinweise</h5>
   <p>Alle Felder bei denen Pflicht bei steht <b>müssen angegeben werden</b>, außer ihr habt diesen Kurs als Leistungskurs</p><br>
   <p>Kurse können nur mit <b>zwei</b> oder <b>vier Semestern</b> eingebracht werden.<br>Man kann kein einzelnes oder drei Semester aus einem Kurs einbringen.</p>
   <p>Im Leistungskurs müssen zwei Kurshalbjahre <b>mindestens fünf Notenpunkte</b> haben</p>
@@ -27,8 +27,8 @@
   <p>Alle Angaben ohne Gewähr</p><br>
   <hr>
   <form name="LKfach" v-on:change="changeLK">
-    <h5>Welche LK-Fächer hast du?</h5>
-    <b><label>1. LK-Fach</label></b>
+    <h5>Welche Leistungskurs-Fächer hast du?</h5>
+    <b><label>1. Leistungskurs-Fach</label></b>
     <select id="lk1">
       <option value="">Bitte auswählen...</option>
       <option value="Biologie">Biologie</option>
@@ -40,7 +40,7 @@
       <option value="Physik">Physik</option>
       <option value="Sozialkunde">Sozialkunde</option>
     </select><br>
-    <b><label>2. LK-Fach</label></b>
+    <b><label>2. Leistungskurs-Fach</label></b>
     <select id="lk2">
       <option value="">Bitte auswählen...</option>
       <option value="Biologie">Biologie</option>
@@ -52,14 +52,14 @@
       <option value="Physik">Physik</option>
       <option value="Sozialkunde">Sozialkunde</option>
     </select>
-  </form><h4 id="warningmessage" style="color: darkred;" v-if="warning">Du kannst nicht 2x den selben LK auswählen<br><br></h4><br>
+  </form><h4 id="warningmessage" style="color: darkred;" v-if="warning">Du kannst nicht 2x den selben Leistungskurs auswählen<br><br></h4><br>
   <!-- Frage, ob 2 Naturwissenschaften und eine FS oder 2 FS und eine NaWi-->
   <form name="decision onefs" v-on:change="changeOneFs">
     <h5>Was bringst du ein?</h5>
     <input type="radio" id="noonefs" name="onefs" value="0">
-    <b><label for="chose1">2 Fremdsprachen / eine Naturwissenschaft</label></b><br>
+    <b><label for="chose1">2 Fremdsprachen & 1 Naturwissenschaft</label></b><br>
     <input type="radio" id="onefs" name="onefs" value="1" checked>
-    <b><label for="chose2">eine Fremdsprache / mind. 2 Naturwissenschaften</label></b><br>
+    <b><label for="chose2">1 Fremdsprache & mind. 2 Naturwissenschaften</label></b><br>
   </form><br>
   <form name="prüfungsfächerGK" v-on:change="changePF">
     <h5>In welchen Fächern (außer LK) wirst du geprüft?</h5>
@@ -125,9 +125,9 @@
   </form>
   <form></form>
   <hr>
-  <h2>Block I</h2><br>
+  <h2>Block I</h2>
 
-  <h3> Verpflichtende Fächer </h3>
+  <h3> Verpflichtende Fächer </h3><br><br>
   <h4> Leistungskurs 1: {{ selectedlk1 }}</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
   <div name="block1" v-on:change="calculateBlock1">
