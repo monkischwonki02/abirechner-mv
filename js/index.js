@@ -14,6 +14,7 @@ new Vue({
                     nw0, nw1, nw2, nw3, nw4, nw5, nw6, nw7, nw8, nw9, nw10, nw11,
                     gw0, gw1, gw2, gw3, gw4, gw5, gw6, gw7, gw8, gw9, gw10, gw11,
                   ],
+        pruefungsfaecher= [pf0, pf1, pf2, pf3],
         mobileAgent: {
             Android() {
                 return navigator.userAgent.match(/Android/i)

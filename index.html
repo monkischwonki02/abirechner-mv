@@ -186,7 +186,25 @@
   <input type="text" class="form-control" v-model="gw11"><br><br>
 
   <h3><b>Anzahl Semester:</b> {{ semesters }}/36</h3>
-  <h3><b>Gesamtpunktzahl:</b> {{ blockI }}</h3>
+  <h3><b>Gesamtpunktzahl: (Block I)</b> {{ blockI }}</h3><br><br><br>
+
+
+  <h2>Block II</h2><br>
+
+  <h4> Prüfungsfächer: (Pflicht)</h4><br>
+  <h5> Prüfungsfach 1</h5>
+  <input type="text" class="form-control" v-model="pf0"><br>
+  <h5> Prüfungsfach 2</h5>
+  <input type="text" class="form-control" v-model="pf1"><br>
+  <h5> Prüfungsfach 3</h5>
+  <input type="text" class="form-control" v-model="pf2"><br>
+  <h5> Prüfungsfach 5</h5>
+  <input type="text" class="form-control" v-model="pf3"><br><br>
+  
+  <h3><b>Gesamtpunktzahl (Block I): </b> {{ blockII }}</h3><br><br>
+  <h3><b>Gesamtpunktzahl (Block I + II): </b> {{ blockI + blockII }}</h3>
+  <h3><b>AbiNote:</b> {{ abiNote }}</h3><br><br><br><br><br>
+
   
   <!--         
   <br>
