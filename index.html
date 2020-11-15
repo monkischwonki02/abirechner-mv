@@ -116,7 +116,7 @@
       <option value="Sozialkunde">Sozialkunde (nur mündlich)</option>
       <option value= "Wirtschaft">Wirtschaft (nur mündlich)</option>
       <option value="Philosophie">Philosophie (nur mündlich)</option>
-      <option value="ev. Religion">ev. Religion (nur mündlich)</option>
+      <option value="Religion">ev. Religion (nur mündlich)</option>
       <option value="Kunst">Kunst (nur mündlich)</option>
       <option value="Musik">Musik (nur mündlich)</option>
       <option value="Spanisch">Spanisch (nur mündlich)</option>
@@ -309,7 +309,8 @@
     </div>
   </div>
 
-    <div name="GK-GW" v-if="(!gw.includes(selectedlk1) && !gw.includes(selectedlk2))">
+    <div name="GK-GW" v-if="(!gw.includes(selectedlk1) && !gw.includes(selectedlk2) && !gw2.includes(selectedgk3)
+                              && !gw2.includes(selectedgk4) && !gw2.includes(selectedgk5))">
       <div v-if="!gw.includes(selectedgk3) && !gw.includes(selectedgk4) && !gw.includes(selectedgk5)">
         <h4>Grundkurs Gesellschaftswissenschaft</h4>
           <h5> 1. Semester (Pflicht)</h5>
@@ -345,6 +346,18 @@
       </div>
       <div v-if="gw.includes(selectedgk5)">
         <h4> Grundkurs {{ selectedgk5 }} (Prüfungsfach):</h4><br>
+          <h5> 1. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 2. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 3. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 4. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      </div>
+
+      <div name="Info-Prüfung" v-if="selectedgk3 == 'Informatik' || selectedgk4 == 'Informatik' || selectedgk5 == 'Informatik'">
+        <h4>Grundkurs Informatik:</h4><br>
           <h5> 1. Semester (Pflicht)</h5>
           <input type="text" class="form-control blockI-pflicht markGK"><br>
           <h5> 2. Semester (Pflicht)</h5>
