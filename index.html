@@ -373,9 +373,9 @@
 
   <div name="sonstigeNoten" v-if="hjleft > 0">
     <h3>Sonstige Noten</h3>
-    <p><b>Hinweise</b></p>
-    <p>Dir fehlen noch {{ hjleft }} Semester die du einbringen musst. Bedenke dabei, dass du entweder nur zwei Semester
-      oder alle Semester aus einem Kurs mit einbringen kannst.
+    <h5>Hinweis</h5>
+    <p><b>Dir fehlen noch {{ hjleft }} Semester die du einbringen musst. Bedenke dabei, dass du entweder nur zwei Semester
+      oder alle Semester aus einem Kurs mit einbringen kannst.</b>
     </p>
     <div v-for="i in hjleft">
     <input type="number" min="0" max="15" class="form-control blockI-left markGK" /><br>
