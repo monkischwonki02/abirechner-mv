@@ -20,266 +20,386 @@
 
   <h1>AbiRechner Mecklenburg Vorpommern</h1><br>
   <h5>Hinweise (hoffenltich iwann unnötig da eh überprüft wird)</h5>
-  <p>Alle Felder bei denen Pflicht bei steht <b>müssen angegeben werden</b>, außer ihr habt diesen Kurs als Leistungskurs<br>
+  <p>Alle Felder bei denen Pflicht bei steht <b>müssen angegeben werden</b>, außer ihr habt diesen Kurs als Leistungskurs</p><br>
   <p>Kurse können nur mit <b>zwei</b> oder <b>vier Semestern</b> eingebracht werden.<br>Man kann kein einzelnes oder drei Semester aus einem Kurs einbringen.</p>
   <p>Im Leistungskurs müssen zwei Kurshalbjahre <b>mindestens fünf Notenpunkte</b> haben</p>
   <p>Es dürfen nur <b>sieben Kurse unter fünf Notenpunkte</b> sein</p>
   <p>Alle Angaben ohne Gewähr</p><br>
+  <hr>
+  <form name="LKfach" v-on:change="changeLK">
+    <h5>Welche LK-Fächer hast du?</h5>
+    <b><label>1. LK-Fach</label></b>
+    <select id="lk1">
+      <option value="">Bitte auswählen...</option>
+      <option value="Deutsch">Deutsch</option>
+      <option value="Englisch">Englisch</option>
+      <option value="Physik">Physik</option>
+      <option value="Mathematik">Mathematik</option>
+      <option value="Biologie">Biologie</option>
+      <option value="Geschichte">Geschichte</option>
+      <option value="Geografie">Geografie</option>
+      <option value="Sozialkunde">Sozialkunde</option>
+    </select><br>
+    <b><label>2. LK-Fach</label></b>
+    <select id="lk2">
+      <option value="">Bitte auswählen...</option>
+      <option value="Deutsch">Deutsch</option>
+      <option value="Englisch">Englisch</option>
+      <option value="Physik">Physik</option>
+      <option value="Mathematik">Mathematik</option>
+      <option value="Biologie">Biologie</option>
+      <option value="Geschichte">Geschichte</option>
+      <option value="Geografie">Geografie</option>
+      <option value="Sozialkunde">Sozialkunde</option>
+    </select>
+  </form><h4 id="warningmessage" style="color: darkred;" v-if="warning">Du kannst nicht 2x den selben LK auswählen<br><br></h4><br>
+  <!-- Frage, ob 2 Naturwissenschaften und eine FS oder 2 FS und eine NaWi-->
+  <form name="decision onefs" v-on:change="changeOneFs">
+    <h5>Was bringst du ein?</h5>
+    <input type="radio" id="noonefs" name="onefs" value="0">
+    <b><label for="chose1">2 Fremdsprachen / eine Naturwissenschaft</label></b><br>
+    <input type="radio" id="onefs" name="onefs" value="1" checked>
+    <b><label for="chose2">eine Fremdsprache / mind. 2 Naturwissenschaften</label></b><br>
+  </form><br>
+  <form name="prüfungsfächerGK" v-on:change="changePF">
+    <h5>In welchen Fächern (außer LK) wirst du geprüft?</h5>
+
+    <b><label>3. Prüfungsfach (schriftlich)</label></b>
+    <select id="gk3">
+      <option value="">Bitte auswählen...</option>
+      <option v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'" value="Deutsch">Deutsch</option>
+      <option v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'" value="Englisch">Englisch</option>
+      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
+      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
+      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
+      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
+      <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
+      <option value="Informatik">Informatik</option>
+      <option value="Latein">Latein</option>
+      <option value="Chemie">Chemie</option>
+    </select><br>
+    <b><label>4. Prüfungsfach (mündlich)</label></b>
+    <select id="gk4">
+      <option value="">Bitte auswählen...</option>
+      <option v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'" value="Deutsch">Deutsch</option>
+      <option v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'" value="Englisch">Englisch</option>
+      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
+      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
+      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
+      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
+      <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
+      <option value="Informatik">Informatik</option>
+      <option value="Latein">Latein</option>
+      <option value="Chemie">Chemie</option>
+      <option value="Sozialkunde">Sozialkunde (nur mündlich)</option>
+      <option value= "Wirtschaft">Wirtschaft (nur mündlich)</option>
+      <option value="Philosophie">Philosophie (nur mündlich)</option>
+      <option value="ev. Religion">ev. Religion (nur mündlich)</option>
+      <option value="Kunst">Kunst (nur mündlich)</option>
+      <option value="Musik">Musik (nur mündlich)</option>
+      <option value="Spanisch">Spanisch (nur mündlich)</option>
+      <option value="Französisch">Französisch (nur mündlich)</option>
+    </select><br>
+    <b><label>5. Prüfungsfach (mündlich)</label></b>
+    <select id="gk5">
+      <option value="">Bitte auswählen...</option>
+      <option v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'" value="Deutsch">Deutsch</option>
+      <option v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'" value="Englisch">Englisch</option>
+      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
+      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
+      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
+      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
+      <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
+      <option value="Informatik">Informatik</option>
+      <option value="Latein">Latein</option>
+      <option value="Chemie">Chemie</option>
+      <option value="Sozialkunde">Sozialkunde (nur mündlich)</option>
+      <option value= "Wirtschaft">Wirtschaft (nur mündlich)</option>
+      <option value="Philosophie">Philosophie (nur mündlich)</option>
+      <option value="ev. Religion">ev. Religion (nur mündlich)</option>
+      <option value="Kunst">Kunst (nur mündlich)</option>
+      <option value="Musik">Musik (nur mündlich)</option>
+      <option value="Spanisch">Spanisch (nur mündlich)</option>
+      <option value="Französisch">Französisch (nur mündlich)</option>
+    </select><br>
+  </form>
+  <form></form>
+  <hr>
   <h2>Block I</h2><br>
 
-
-  <h4> Leistungskurs 1:</h4><br>
+  <h3> Verpflichtende Fächer </h3>
+  <h4> Leistungskurs 1: {{ selectedlk1 }}</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs0"><br>
+  <div name="block1" v-on:change="calculateBlock1">
+  <input type="text" class="form-control blockI-pflicht markLK" ><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs1"><br>
+  <input type="text" class="form-control blockI-pflicht markLK"><br>
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs2"><br>
+  <input type="text" class="form-control blockI-pflicht markLK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs3"><br><br>
+  <input type="text" class="form-control blockI-pflicht markLK"><br><br>
 
-  <h4> Leistungskurs 2:</h4><br>
+  <h4> Leistungskurs 2: {{ selectedlk2 }}</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs4"><br>
+  <input type="text" class="form-control blockI-pflicht markLK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs5"><br>
+  <input type="text" class="form-control blockI-pflicht markLK"><br>
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs6"><br>
+  <input type="text" class="form-control blockI-pflicht markLK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="leistungskurs7"><br><br>
+  <input type="text" class="form-control blockI-pflicht markLK"><br><br>
 
+  <div name="GKMathe" v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'">
   <h4> Grundkurs Mathe:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="ma0"><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="ma1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="ma2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="ma3"><br><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 3. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 4. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
 
+  <div name="GKDeutsch" v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'">
   <h4> Grundkurs Deutsch:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="de0"><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="de1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="de2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="de3"><br><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 3. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 4. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
 
+  <div name="GKGeschichte" v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'">
   <h4> Grundkurs Geschichte:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="ge0"><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="ge1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="ge2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="ge3"><br><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 3. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 4. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <h4> Grundkurs Kunst/Musik:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="km0"><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="km1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="km2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="km3"><br><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <div v-if="('Kunst' == selectedgk3 || 'Kunst' == selectedgk4 || 'Kunst' == selectedgk5) || ('Musik' == selectedgk3 || 'Musik' == selectedgk4 || 'Musik' == selectedgk5)">
+  <h5> 3. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 4. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <h4> Grundkurs Philosophie/Religion:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="pr0"><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="pr1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="pr2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="pr3"><br><br>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <div v-if="('Philosophie' == selectedgk3 || 'Philosophie' == selectedgk4 || 'Philosophie' == selectedgk5) || ('Religion' == gk3 || 'Religion' == selectedgk4 || 'Religion' == selectedgk5)">
+  <h5> 3. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <h5> 4. Semester (Pflicht)</h5>
+  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
 
-  <h4> Grundkurs 1. Fremdsprache:</h4><br>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="fs0"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="fs1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="fs2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="fs3"><br><br>
+  <div name="GKFS" v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'">
+    <div v-if="!fs.includes(selectedgk3) && !fs.includes(selectedgk4) && !fs.includes(selectedgk5)">
+      <h4> Grundkurs 1. Fremdsprache:</h4><br>
+      <h5> 1. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 2. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 3. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 4. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+    <div v-if="nw.includes(selectedgk3)">
+      <h4> Grundkurs {{ selectedgk3 }}:</h4><br>
+      <h5> 1. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 2. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 3. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 4. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+    <div v-if="nw.includes(selectedgk4)">
+      <h4> Grundkurs {{ selectedgk4 }}:</h4><br>
+      <h5> 1. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 2. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 3. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 4. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+    <div v-if="nw.includes(selectedgk5)">
+      <h4> Grundkurs {{ selectedgk5 }}:</h4><br>
+      <h5> 1. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 2. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 3. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 4. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+  </div>
 
-  <h4> Grundkurs 1. Naturwissenschaft [Biologie, Chemie, Physik]:</h4><br>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="nw0"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="nw1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="nw2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="nw3"><br><br>
+  <div name="GKFSII" v-if="onefs == 0">
+      <h4> Grundkurs 2. Fremdsprache:</h4><br>
+      <h5> 1. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 2. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 3. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <h5> 4. Semester (Pflicht)</h5>
+      <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
 
-  <h4> Grundkurs 2. Fremdsprache: (Optional)</h4><br>
-  <p><b>wenn zwei Fremdsprachen eingebracht werden muss nur noch eine Naturwissenschaft eingebracht werden</b></p>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="fs4"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="fs5"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="fs6"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="fs7"><br><br>
+  <div name="GK-Nawi1" v-if="(!nw.includes(selectedlk1) && !nw.includes(selectedlk2))">
+    <div v-if="!nw.includes(selectedgk3) && !nw.includes(selectedgk4) && !nw.includes(selectedgk5)">
+      <h4>Grundkurs Naturwissenschaft</h4><br></br>
+        <h5> 1. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 2. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 3. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 4. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+    <div v-if="nw.includes(selectedgk3)">
+      <h4> Grundkurs {{ selectedgk3 }}:</h4><br>
+        <h5> 1. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 2. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 3. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 4. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+    <div v-if="nw.includes(selectedgk4)">
+      <h4> Grundkurs {{ selectedgk4 }}:</h4><br>
+        <h5> 1. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 2. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 3. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 4. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+    <div v-if="nw.includes(selectedgk5)">
+      <h4> Grundkurs {{ selectedgk5 }}:</h4><br>
+        <h5> 1. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 2. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 3. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <h5> 4. Semester (Pflicht)</h5>
+        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+    </div>
+  </div>
 
-  <h4> Grundkurs 2. Naturwissenschaft: (Optional) [Biologie, Chemie, Physik]</h4><br>
-  <p><b>wenn zwei Naturwissenschaften eingebracht werden muss nur noch eine Fremdsprache eingebracht werden</b></p>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="nw4"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="nw5"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="nw6"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="nw7"><br><br>
+    <div name="GK-GW" v-if="(!gw.includes(selectedlk1) && !gw.includes(selectedlk2))">
+      <div v-if="!gw.includes(selectedgk3) && !gw.includes(selectedgk4) && !gw.includes(selectedgk5)">
+        <h4>Grundkurs Gesellschaftswissenschaft</h4>
+          <h5> 1. Semester (Pflicht)</h5>
+            <input type="text" class="form-control blockI-pflicht markGK"><br>
+            <h5> 2. Semester (Pflicht)</h5>
+            <input type="text" class="form-control blockI-pflicht markGK"><br>
+            <h5> 3. Semester (Pflicht)</h5>
+            <input type="text" class="form-control blockI-pflicht markGK"><br>
+            <h5> 4. Semester (Pflicht)</h5>
+            <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      </div>
+      <div v-if="gw.includes(selectedgk3)">
+        <h4> Grundkurs {{ selectedgk3 }} (Prüfungsfach):</h4><br>
+          <h5> 1. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 2. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 3. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 4. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      </div>
+      <div v-if="gw.includes(selectedgk4)">
+        <h4> Grundkurs {{ selectedgk4 }} (Prüfungsfach):</h4><br>
+        <h5> 1. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 2. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 3. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 4. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      </div>
+      <div v-if="gw.includes(selectedgk5)">
+        <h4> Grundkurs {{ selectedgk5 }} (Prüfungsfach):</h4><br>
+          <h5> 1. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 2. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 3. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <h5> 4. Semester (Pflicht)</h5>
+          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      </div>
+      <h3><b>Anzahl Semester:</b> {{ blockIPflicht }}/36</h3>
+    </div>
+    <hr>
 
-  <h4> Grundkurs 3. Naturwissenschaft: (Optional) [Biologie, Chemie, Physik]</h4><br>
-  <p><b>wenn zwei Naturwissenschaften eingebracht werden muss nur noch eine Fremdsprache eingebracht werden</b></p>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="nw8"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="nw9"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="nw10"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="nw11"><br><br>
+  <div name="sonstigeNoten" v-if="hjleft > 0">
+    <h3>Sonstige Noten</h3>
+    <div v-for="i in hjleft">
+    <input type="text" class="form-control blockI-left markGK" /><br>
+    </div>
+  </div>
 
-  <h4> Grundkurs Informatik: (Optional)</h4><br>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="in0"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="in1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="in2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="in3"><br><br>
+  <h3><b>Anzahl Semester:</b> {{ blockIPflicht+hjleft }}/36</h3>
+  <h3><b>Gesamtpunktzahl: (Block I)</b> {{ blockI }}</h3>
+  <h3><b>Gesamtpunktzahl verrechnet: (Block I)</b> {{ Math.round((blockI*40)/44) }}</h3><br><br><br>
 
-  <h4> Grundkurs Gesellschaftswissenschaft 1: (Optional) [Geographie, Sozialkunde, Wirtschaft]</h4><br>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="gw0"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="gw1"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="gw2"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="gw3"><br><br>
-
-  <h4> Grundkurs Gesellschaftswissenschaft 2: (Optional) [Geographie, Sozialkunde, Wirtschaft]</h4><br>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="gw4"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="gw5"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="gw6"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="gw7"><br><br>
-
-  <h4> Grundkurs Gesellschaftswissenschaft 3: (Optional) [Geographie, Sozialkunde, Wirtschaft]</h4><br>
-  <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="gw8"><br>
-  <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control" v-model="gw9"><br>
-  <h5> 3. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="gw10"><br>
-  <h5> 4. Semester (Optional)</h5>
-  <input type="text" class="form-control" v-model="gw11"><br><br>
-
-  <h3><b>Anzahl Semester:</b> {{ semesters }}/36</h3>
-  <h3><b>Gesamtpunktzahl: (Block I)</b> {{ blockI }}</h3><br><br><br>
-
-
+  </div>
+  <div name="block2" v-on:change="calculateBlock2">
   <h2>Block II</h2><br>
 
-  <h4> Prüfungsfächer: (Pflicht)</h4><br>
-  <h5> Prüfungsfach 1</h5>
-  <input type="text" class="form-control" v-model="pf0"><br>
-  <h5> Prüfungsfach 2</h5>
-  <input type="text" class="form-control" v-model="pf1"><br>
-  <h5> Prüfungsfach 3</h5>
-  <input type="text" class="form-control" v-model="pf2"><br>
-  <h5> Prüfungsfach 5</h5>
-  <input type="text" class="form-control" v-model="pf3"><br><br>
+  <h4> Prüfungsfächer:</h4><br>
   
-  <h3><b>Gesamtpunktzahl (Block I): </b> {{ blockII }}</h3><br><br>
-  <h3><b>Gesamtpunktzahl (Block I + II): </b> {{ blockI + blockII }}</h3>
-  <h3><b>AbiNote:</b> {{ abiNote }}</h3><br><br><br><br><br>
-
-  
-  <!--         
-  <br>
-    <div class="toc"><p><a href="#sonstNoten">Zu den sonstigen Noten</a><br><a href="#klausNoten">Zu den Klausur Noten</a></p></div>
-  <div class="row">
-	<div class="col-sm-6">
-  <h4 id="sonstNoten"> sonstige Noten </h4>
-          <table id='worksheet_table' class="table table-striped">
-            <thead>
-              <tr>
-				<th>Notenpunkte</th>
-				<th>Punktzahl</th>		
-              </tr>
-            </thead>
-            <tbody>
-				<tr v-for="(sonstNote, index) in sonstNotenRechner">
-					<td>{{ 15 - index }}</td>
-					<td>{{ sonstNote }}</td>
-				</tr>
-            </tbody>
-          </table>
-		  
-		  <br><br></div>
-		  <div class="col-sm-6">
-  <h4 id="klausNoten"> Klausur Noten </h4>
-          <table id='worksheet_table' class="table table-striped">
-            <thead>
-              <tr>
-                <th>Notenpunkte</th>
-                <th>Punktzahl</th>			
-              </tr>
-            </thead>
-            <tbody>
-				<tr v-for="(klausurNote, index) in klausurNotenRechner">
-					<td>{{ 15 - index }}</td>
-					<td>{{ klausurNote }}</td>
-				</tr>
-            </tbody>
-          </table>
-		  <br><br><br></div></div>
-		  <h4> Rechenweg </h4>
-		  <p> Hier die Rechnung zur Nachvollziehung: <code> gesamtpunktzahl * prozent / 100 </code>
-		  <table id='worksheet_table' class="table table-striped">
-            <thead>
-              <tr>
-				<th>Notenpunkte</th>
-                <th>sonstige Noten</th>
-                <th>Klausur Noten</th>				
-              </tr>
-			</thead>
-			<tbody>
-				<tr v-for="(punktzahl, index) in umrechnungSonstNoten">
-					<td>{{ 15 - index }}</td>
-					<td>{{ punktzahl }}%</td>
-					<td>{{ umrechnungKlausurNoten[index] }}%</td>
-				</tr>
-			</tbody>		  
-        </table>
-    
-   -->  
-<!-- Return to Top -->
-<a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
+  <h5> Prüfungsfach 1 {{ selectedlk1 }}</h5>
+  <input type="text" class="form-control markPF"><br>
+  <h5> Prüfungsfach 2 {{ selectedlk2 }}</h5>
+  <input type="text" class="form-control markPF"><br>
+  <h5> Prüfungsfach 3 {{ selectedgk3 }}</h5>
+  <input type="text" class="form-control markPF"><br>
+  <h5> Prüfungsfach 4 {{ selectedgk4 }}</h5>
+  <input type="text" class="form-control markPF"><br>
+  <h5> Prüfungsfach 5 {{ selectedgk5 }}</h5>
+  <input type="text" class="form-control markPF"><br><br>
+  </div>
+  <h3><b>Gesamtpunktzahl (Block II): </b> {{ blockII }}</h3><br><br>
+  <h3><b>Gesamtpunktzahl (Block I + II): </b> {{ Math.round((blockI*40)/44) + blockII }}</h3>
+  <h3><b>Abitur-Note:</b> {{ Number.parseFloat((17/3)-((Math.round((blockI*40)/44) + blockII)/180)).toPrecision(3)}}</h3><br><br><br><br><br>
+ 
+  </p></div>
+  <!-- Return to Top -->
+  <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
 
 
-<!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
-<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    </div>
-		  <script src="/js/index.js"></script>
-      <script src="/js/return-to-top.js"></script>     
+  <!-- ICON NEEDS FONT AWESOME FOR CHEVRON UP ICON -->
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+      </div>
+        <script src="/js/index.js"></script>
+        <script src="/js/return-to-top.js"></script>     
       
 </body>
 </html>
