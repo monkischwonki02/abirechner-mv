@@ -18,19 +18,177 @@
 <body>
 <div class="container" id="app"><br><br><br>
 
-	<h4> Gesamtpunktzahl eingeben:</h4>
-        <table id='worksheet_table' class="table table-striped">
-            <thead>
-              <tr>
-                
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" name="punkte" id="punkte" class="form-control" v-model="punktzahl"></td>
-              </tr>
-            </tbody>
-          </table>
+  <h1>AbiRechner Mecklenburg Vorpommern</h1><br>
+  <h2>Block I</h2><br>
+
+
+  <h4> Leistungskurs 1:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs1"><br>
+  <h5> 3. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs2"><br>
+  <h5> 4. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs3"><br><br>
+
+  <h4> Leistungskurs 2:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs4"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs5"><br>
+  <h5> 3. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs6"><br>
+  <h5> 4. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="leistungskurs7"><br><br>
+
+  <h4> Grundkurs Mathe:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="ma0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="ma1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="ma2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="ma3"><br><br>
+
+  <h4> Grundkurs Deutsch:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="de0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="de1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="de2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="de3"><br><br>
+
+  <h4> Grundkurs Geschichte:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="ge0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="ge1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="ge2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="ge3"><br><br>
+
+  <h4> Grundkurs Kunst/Musik:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="km0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="km1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="km2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="km3"><br><br>
+
+  <h4> Grundkurs Philosophie/Religion:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="pr0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="pr1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="pr2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="pr3"><br><br>
+
+  <h4> Grundkurs 1. Fremdsprache:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="fs0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="fs1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="fs2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="fs3"><br><br>
+
+  <h4> Grundkurs 1. Naturwissenschaft [Biologie, Chemie, Physik]:</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="nw0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="nw1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="nw2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="nw3"><br><br>
+
+  <h4> Grundkurs 2. Fremdsprache: (Optional)</h4><br>
+  <p><b>wenn zwei Fremdsprachen eingebracht werden muss nur noch eine Naturwissenschaft eingebracht werden</b></p>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="fs4"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="fs5"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="fs6"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="fs7"><br><br>
+
+  <h4> Grundkurs 2. Naturwissenschaft: (Optional) [Biologie, Chemie, Physik]</h4><br>
+  <p><b>wenn zwei Naturwissenschaften eingebracht werden muss nur noch eine Fremdsprache eingebracht werden</b></p>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="nw4"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="nw5"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="nw6"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="nw7"><br><br>
+
+  <h4> Grundkurs 3. Naturwissenschaft: (Optional) [Biologie, Chemie, Physik]</h4><br>
+  <p><b>wenn zwei Naturwissenschaften eingebracht werden muss nur noch eine Fremdsprache eingebracht werden</b></p>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="nw8"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="nw9"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="nw10"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="nw11"><br><br>
+
+  <h4> Grundkurs Informatik: (Optional)</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="in0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="in1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="in2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="in3"><br><br>
+
+  <h4> Grundkurs Gesellschaftswissenschaft 1: (Optional) [Geographie, Sozialkunde, Wirtschaft]</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="gw0"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="gw1"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="gw2"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="gw3"><br><br>
+
+  <h4> Grundkurs Gesellschaftswissenschaft 2: (Optional) [Geographie, Sozialkunde, Wirtschaft]</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="gw4"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="gw5"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="gw6"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="gw7"><br><br>
+
+  <h4> Grundkurs Gesellschaftswissenschaft 3: (Optional) [Geographie, Sozialkunde, Wirtschaft]</h4><br>
+  <h5> 1. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="gw8"><br>
+  <h5> 2. Semester (Pflicht)</h5>
+  <input type="text" class="form-control" v-model="gw9"><br>
+  <h5> 3. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="gw10"><br>
+  <h5> 4. Semester (Optional)</h5>
+  <input type="text" class="form-control" v-model="gw11"><br><br>
+
+  <h3><b>Anzahl Semester:</b> {{ semesters }}/36</h3>
+  <h3><b>Gesamtpunktzahl:</b> {{ blockI }}</h3>
+  
+  <!--         
   <br>
     <div class="toc"><p><a href="#sonstNoten">Zu den sonstigen Noten</a><br><a href="#klausNoten">Zu den Klausur Noten</a></p></div>
   <div class="row">
@@ -88,7 +246,7 @@
 			</tbody>		  
         </table>
     
-   
+   -->  
 <!-- Return to Top -->
 <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
 
