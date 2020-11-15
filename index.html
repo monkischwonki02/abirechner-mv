@@ -31,25 +31,25 @@
     <b><label>1. LK-Fach</label></b>
     <select id="lk1">
       <option value="">Bitte auswählen...</option>
-      <option value="Deutsch">Deutsch</option>
-      <option value="Englisch">Englisch</option>
-      <option value="Physik">Physik</option>
-      <option value="Mathematik">Mathematik</option>
       <option value="Biologie">Biologie</option>
-      <option value="Geschichte">Geschichte</option>
+      <option value="Deutsch">Deutsch</option>
       <option value="Geografie">Geografie</option>
+      <option value="Geschichte">Geschichte</option>
+      <option value="Englisch">Englisch</option>
+      <option value="Mathematik">Mathematik</option>
+      <option value="Physik">Physik</option>
       <option value="Sozialkunde">Sozialkunde</option>
     </select><br>
     <b><label>2. LK-Fach</label></b>
     <select id="lk2">
       <option value="">Bitte auswählen...</option>
-      <option value="Deutsch">Deutsch</option>
-      <option value="Englisch">Englisch</option>
-      <option value="Physik">Physik</option>
-      <option value="Mathematik">Mathematik</option>
       <option value="Biologie">Biologie</option>
-      <option value="Geschichte">Geschichte</option>
+      <option value="Deutsch">Deutsch</option>
       <option value="Geografie">Geografie</option>
+      <option value="Geschichte">Geschichte</option>
+      <option value="Englisch">Englisch</option>
+      <option value="Mathematik">Mathematik</option>
+      <option value="Physik">Physik</option>
       <option value="Sozialkunde">Sozialkunde</option>
     </select>
   </form><h4 id="warningmessage" style="color: darkred;" v-if="warning">Du kannst nicht 2x den selben LK auswählen<br><br></h4><br>
@@ -67,60 +67,60 @@
     <b><label>3. Prüfungsfach (schriftlich)</label></b>
     <select id="gk3">
       <option value="">Bitte auswählen...</option>
+      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
+      <option value="Chemie">Chemie</option>
       <option v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'" value="Deutsch">Deutsch</option>
       <option v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'" value="Englisch">Englisch</option>
-      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
-      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
-      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
-      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
       <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
+      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
       <option value="Informatik">Informatik</option>
       <option value="Latein">Latein</option>
-      <option value="Chemie">Chemie</option>
+      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
+      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
     </select><br>
     <b><label>4. Prüfungsfach (mündlich)</label></b>
     <select id="gk4">
       <option value="">Bitte auswählen...</option>
+      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
+      <option value="Chemie">Chemie</option>
       <option v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'" value="Deutsch">Deutsch</option>
       <option v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'" value="Englisch">Englisch</option>
-      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
-      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
-      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
-      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
-      <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
-      <option value="Informatik">Informatik</option>
-      <option value="Latein">Latein</option>
-      <option value="Chemie">Chemie</option>
-      <option value="Sozialkunde">Sozialkunde (nur mündlich)</option>
-      <option value= "Wirtschaft">Wirtschaft (nur mündlich)</option>
-      <option value="Philosophie">Philosophie (nur mündlich)</option>
       <option value="ev. Religion">ev. Religion (nur mündlich)</option>
-      <option value="Kunst">Kunst (nur mündlich)</option>
-      <option value="Musik">Musik (nur mündlich)</option>
-      <option value="Spanisch">Spanisch (nur mündlich)</option>
       <option value="Französisch">Französisch (nur mündlich)</option>
+      <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
+      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
+      <option value="Informatik">Informatik</option>
+      <option value="Kunst">Kunst (nur mündlich)</option>
+      <option value="Latein">Latein</option>
+      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
+      <option value="Musik">Musik (nur mündlich)</option>
+      <option value="Philosophie">Philosophie (nur mündlich)</option>
+      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
+      <option value="Sozialkunde">Sozialkunde (nur mündlich)</option>
+      <option value="Spanisch">Spanisch (nur mündlich)</option>
+      <option value= "Wirtschaft">Wirtschaft (nur mündlich)</option>
     </select><br>
     <b><label>5. Prüfungsfach (mündlich)</label></b>
     <select id="gk5">
       <option value="">Bitte auswählen...</option>
+      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
+      <option value="Chemie">Chemie</option>
       <option v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'" value="Deutsch">Deutsch</option>
       <option v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'" value="Englisch">Englisch</option>
-      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
-      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
-      <option v-if="selectedlk1 != 'Biologie' && selectedlk2 != 'Biologie'" value="Biologie">Biologie</option>
-      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
-      <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
-      <option value="Informatik">Informatik</option>
-      <option value="Latein">Latein</option>
-      <option value="Chemie">Chemie</option>
-      <option value="Sozialkunde">Sozialkunde (nur mündlich)</option>
-      <option value= "Wirtschaft">Wirtschaft (nur mündlich)</option>
-      <option value="Philosophie">Philosophie (nur mündlich)</option>
-      <option value="Religion">ev. Religion (nur mündlich)</option>
-      <option value="Kunst">Kunst (nur mündlich)</option>
-      <option value="Musik">Musik (nur mündlich)</option>
-      <option value="Spanisch">Spanisch (nur mündlich)</option>
+      <option value="ev. Religion">ev. Religion (nur mündlich)</option>
       <option value="Französisch">Französisch (nur mündlich)</option>
+      <option v-if="selectedlk1 != 'Geografie' && selectedlk2 != 'Geografie'" value="Geografie">Geografie</option>
+      <option v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'" value="Geschichte">Geschichte</option>
+      <option value="Informatik">Informatik</option>
+      <option value="Kunst">Kunst (nur mündlich)</option>
+      <option value="Latein">Latein</option>
+      <option v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'" value="Mathematik">Mathematik</option>
+      <option value="Musik">Musik (nur mündlich)</option>
+      <option value="Philosophie">Philosophie (nur mündlich)</option>
+      <option v-if="selectedlk1 != 'Physik' && selectedlk2 != 'Physik'" value="Physik">Physik</option>
+      <option value="Sozialkunde">Sozialkunde (nur mündlich)</option>
+      <option value="Spanisch">Spanisch (nur mündlich)</option>
+      <option value= "Wirtschaft">Wirtschaft (nur mündlich)</option>
     </select><br>
   </form>
   <form></form>
