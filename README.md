@@ -1,2 +1,2 @@
-# Benötigte Punktzahl Rechner
-Kleine Webanwendung/Webseite, die die benötigten Punkte für eine Klausur oder Test ausgibt.
+# AbiRechner
+Kleine Webanwendung/Webseite, die die AbiNote für MV ausgibt.
