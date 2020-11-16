@@ -19,16 +19,11 @@
 <div class="container" id="app"><br><br><br>
 
   <h1>AbiRechner Mecklenburg Vorpommern</h1><br>
-  <h5>Hinweise (hoffenltich iwann unnötig da eh überprüft wird)</h5>
-  <p>Alle Felder bei denen Pflicht bei steht <b>müssen angegeben werden</b>, außer ihr habt diesen Kurs als Leistungskurs</p><br>
-  <p>Kurse können nur mit <b>zwei</b> oder <b>vier Semestern</b> eingebracht werden.<br>Man kann kein einzelnes oder drei Semester aus einem Kurs einbringen.</p>
-  <p>Im Leistungskurs müssen zwei Kurshalbjahre <b>mindestens fünf Notenpunkte</b> haben</p>
-  <p>Es dürfen nur <b>sieben Kurse unter fünf Notenpunkte</b> sein</p>
   <p>Alle Angaben ohne Gewähr</p><br>
   <hr>
   <form name="LKfach" v-on:change="changeLK">
-    <h5>Welche LK-Fächer hast du?</h5>
-    <b><label>1. LK-Fach</label></b>
+    <h5>Welche Leistungskurs-Fächer hast du?</h5>
+    <b><label>1. Leistungskurs-Fach</label></b>
     <select id="lk1">
       <option value="">Bitte auswählen...</option>
       <option value="Biologie">Biologie</option>
@@ -40,7 +35,7 @@
       <option value="Physik">Physik</option>
       <option value="Sozialkunde">Sozialkunde</option>
     </select><br>
-    <b><label>2. LK-Fach</label></b>
+    <b><label>2. Leistungskurs-Fach</label></b>
     <select id="lk2">
       <option value="">Bitte auswählen...</option>
       <option value="Biologie">Biologie</option>
@@ -52,14 +47,14 @@
       <option value="Physik">Physik</option>
       <option value="Sozialkunde">Sozialkunde</option>
     </select>
-  </form><h4 id="warningmessage" style="color: darkred;" v-if="warning">Du kannst nicht 2x den selben LK auswählen<br><br></h4><br>
+  </form><h4 id="warningmessage" style="color: darkred;" v-if="warning">Du kannst nicht 2x den selben Leistungskurs auswählen<br><br></h4><br>
   <!-- Frage, ob 2 Naturwissenschaften und eine FS oder 2 FS und eine NaWi-->
   <form name="decision onefs" v-on:change="changeOneFs">
     <h5>Was bringst du ein?</h5>
     <input type="radio" id="noonefs" name="onefs" value="0">
-    <b><label for="chose1">2 Fremdsprachen / eine Naturwissenschaft</label></b><br>
+    <b><label for="chose1">2 Fremdsprachen & 1 Naturwissenschaft</label></b><br>
     <input type="radio" id="onefs" name="onefs" value="1" checked>
-    <b><label for="chose2">eine Fremdsprache / mind. 2 Naturwissenschaften</label></b><br>
+    <b><label for="chose2">1 Fremdsprache & mind. 2 Naturwissenschaften</label></b><br>
   </form><br>
   <form name="prüfungsfächerGK" v-on:change="changePF">
     <h5>In welchen Fächern (außer LK) wirst du geprüft?</h5>
@@ -125,187 +120,187 @@
   </form>
   <form></form>
   <hr>
-  <h2>Block I</h2><br>
+  <h2>Block I</h2>
 
-  <h3> Verpflichtende Fächer </h3>
+  <h3> Verpflichtende Fächer </h3><br><br>
   <h4> Leistungskurs 1: {{ selectedlk1 }}</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
   <div name="block1" v-on:change="calculateBlock1">
-  <input type="text" class="form-control blockI-pflicht markLK" ><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK" ><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markLK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK"><br>
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markLK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markLK"><br><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK"><br><br>
 
   <h4> Leistungskurs 2: {{ selectedlk2 }}</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markLK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markLK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK"><br>
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markLK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markLK"><br><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markLK"><br><br>
 
   <div name="GKMathe" v-if="selectedlk1 != 'Mathematik' && selectedlk2 != 'Mathematik'">
   <h4> Grundkurs Mathe:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <div name="GKDeutsch" v-if="selectedlk1 != 'Deutsch' && selectedlk2 != 'Deutsch'">
   <h4> Grundkurs Deutsch:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <div name="GKGeschichte" v-if="selectedlk1 != 'Geschichte' && selectedlk2 != 'Geschichte'">
   <h4> Grundkurs Geschichte:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <h4> Grundkurs Kunst/Musik:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <div v-if="('Kunst' == selectedgk3 || 'Kunst' == selectedgk4 || 'Kunst' == selectedgk5) || ('Musik' == selectedgk3 || 'Musik' == selectedgk4 || 'Musik' == selectedgk5)">
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <h4> Grundkurs Philosophie/Religion:</h4><br>
   <h5> 1. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 2. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <div v-if="('Philosophie' == selectedgk3 || 'Philosophie' == selectedgk4 || 'Philosophie' == selectedgk5) || ('Religion' == gk3 || 'Religion' == selectedgk4 || 'Religion' == selectedgk5)">
   <h5> 3. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
   <h5> 4. Semester (Pflicht)</h5>
-  <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
+  <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <div name="GKFS" v-if="selectedlk1 != 'Englisch' && selectedlk2 != 'Englisch'">
     <div v-if="!fs.includes(selectedgk3) && !fs.includes(selectedgk4) && !fs.includes(selectedgk5)">
       <h4> Grundkurs 1. Fremdsprache:</h4><br>
       <h5> 1. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 2. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 3. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 4. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
     <div v-if="nw.includes(selectedgk3)">
       <h4> Grundkurs {{ selectedgk3 }}:</h4><br>
       <h5> 1. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 2. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 3. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 4. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
     <div v-if="nw.includes(selectedgk4)">
       <h4> Grundkurs {{ selectedgk4 }}:</h4><br>
       <h5> 1. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 2. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 3. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 4. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
     <div v-if="nw.includes(selectedgk5)">
       <h4> Grundkurs {{ selectedgk5 }}:</h4><br>
       <h5> 1. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 2. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 3. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 4. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
   </div>
 
   <div name="GKFSII" v-if="onefs == 0">
       <h4> Grundkurs 2. Fremdsprache:</h4><br>
       <h5> 1. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 2. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 3. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
       <h5> 4. Semester (Pflicht)</h5>
-      <input type="text" class="form-control blockI-pflicht markGK"><br><br></div>
+      <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br></div>
 
   <div name="GK-Nawi1" v-if="(!nw.includes(selectedlk1) && !nw.includes(selectedlk2))">
     <div v-if="!nw.includes(selectedgk3) && !nw.includes(selectedgk4) && !nw.includes(selectedgk5)">
       <h4>Grundkurs Naturwissenschaft</h4><br></br>
         <h5> 1. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 2. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 3. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 4. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
     <div v-if="nw.includes(selectedgk3)">
       <h4> Grundkurs {{ selectedgk3 }}:</h4><br>
         <h5> 1. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 2. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 3. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 4. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
     <div v-if="nw.includes(selectedgk4)">
       <h4> Grundkurs {{ selectedgk4 }}:</h4><br>
         <h5> 1. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 2. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 3. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 4. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
     <div v-if="nw.includes(selectedgk5)">
       <h4> Grundkurs {{ selectedgk5 }}:</h4><br>
         <h5> 1. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 2. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 3. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
         <h5> 4. Semester (Pflicht)</h5>
-        <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+        <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
     </div>
   </div>
 
@@ -314,58 +309,58 @@
       <div v-if="!gw.includes(selectedgk3) && !gw.includes(selectedgk4) && !gw.includes(selectedgk5)">
         <h4>Grundkurs Gesellschaftswissenschaft</h4>
           <h5> 1. Semester (Pflicht)</h5>
-            <input type="text" class="form-control blockI-pflicht markGK"><br>
+            <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
             <h5> 2. Semester (Pflicht)</h5>
-            <input type="text" class="form-control blockI-pflicht markGK"><br>
+            <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
             <h5> 3. Semester (Pflicht)</h5>
-            <input type="text" class="form-control blockI-pflicht markGK"><br>
+            <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
             <h5> 4. Semester (Pflicht)</h5>
-            <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+            <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
       </div>
       <div v-if="gw.includes(selectedgk3)">
         <h4> Grundkurs {{ selectedgk3 }} (Prüfungsfach):</h4><br>
           <h5> 1. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 2. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 3. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 4. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
       </div>
       <div v-if="gw.includes(selectedgk4)">
         <h4> Grundkurs {{ selectedgk4 }} (Prüfungsfach):</h4><br>
         <h5> 1. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 2. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 3. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 4. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
       </div>
       <div v-if="gw.includes(selectedgk5)">
         <h4> Grundkurs {{ selectedgk5 }} (Prüfungsfach):</h4><br>
           <h5> 1. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 2. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 3. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 4. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
       </div>
 
       <div name="Info-Prüfung" v-if="selectedgk3 == 'Informatik' || selectedgk4 == 'Informatik' || selectedgk5 == 'Informatik'">
         <h4>Grundkurs Informatik:</h4><br>
           <h5> 1. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 2. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 3. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br>
           <h5> 4. Semester (Pflicht)</h5>
-          <input type="text" class="form-control blockI-pflicht markGK"><br><br>
+          <input type="number" min="0" max="15" class="form-control blockI-pflicht markGK"><br><br>
       </div>
       <h3><b>Anzahl Semester:</b> {{ blockIPflicht }}/36</h3>
     </div>
@@ -373,8 +368,12 @@
 
   <div name="sonstigeNoten" v-if="hjleft > 0">
     <h3>Sonstige Noten</h3>
+    <h5>Hinweis</h5>
+    <p><b>Dir fehlen noch {{ hjleft }} Semester die du einbringen musst. Dir steht frei jedes Semester,
+      welches noch nicht eingebracht wurde, einzubringen.</b>
+    </p>
     <div v-for="i in hjleft">
-    <input type="text" class="form-control blockI-left markGK" /><br>
+    <input type="number" min="0" max="15" class="form-control blockI-left markGK" /><br>
     </div>
   </div>
 
@@ -389,15 +388,15 @@
   <h4> Prüfungsfächer:</h4><br>
   
   <h5> Prüfungsfach 1 {{ selectedlk1 }}</h5>
-  <input type="text" class="form-control markPF"><br>
+  <input type="number" min="0" max="15" class="form-control markPF"><br>
   <h5> Prüfungsfach 2 {{ selectedlk2 }}</h5>
-  <input type="text" class="form-control markPF"><br>
+  <input type="number" min="0" max="15" class="form-control markPF"><br>
   <h5> Prüfungsfach 3 {{ selectedgk3 }}</h5>
-  <input type="text" class="form-control markPF"><br>
+  <input type="number" min="0" max="15" class="form-control markPF"><br>
   <h5> Prüfungsfach 4 {{ selectedgk4 }}</h5>
-  <input type="text" class="form-control markPF"><br>
+  <input type="number" min="0" max="15" class="form-control markPF"><br>
   <h5> Prüfungsfach 5 {{ selectedgk5 }}</h5>
-  <input type="text" class="form-control markPF"><br><br>
+  <input type="number" min="0" max="15" class="form-control markPF"><br><br>
   </div>
   <h3><b>Gesamtpunktzahl (Block II): </b> {{ blockII }}</h3><br><br>
   <h3><b>Gesamtpunktzahl (Block I + II): </b> {{ Math.round((blockI*40)/44) + blockII }}</h3>
